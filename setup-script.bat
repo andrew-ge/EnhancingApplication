@@ -1,6 +1,6 @@
-# #  !/bin/bash
+:: #!/bin/bash
 
-# Variables
+::# Variables
 resourceGroup="acdnd-c4-project"
 location="westus2"
 osType="UbuntuLTS"
@@ -17,7 +17,7 @@ probeName="tcpProbe"
 vmSize="Standard_B1ls"
 storageType="Standard_LRS"
 
-# Create resource group
+::# Create resource group
 echo "Creating resource group $resourceGroup..."
 
 az group create \
@@ -27,7 +27,7 @@ az group create \
 
 echo "Resource group created: $resourceGroup"
 
-# Create Storage account
+::# Create Storage account
 echo "Creating storage account $storageAccount"
 
 az storage account create \
@@ -38,7 +38,7 @@ az storage account create \
 
 echo "Storage account created: $storageAccount"
 
-# Create Network Security Group
+::# Create Network Security Group
 echo "Creating network security group $nsgName"
 
 az network nsg create \
@@ -48,7 +48,7 @@ az network nsg create \
 
 echo "Network security group created: $nsgName"
 
-# Create VM Scale Set
+::# Create VM Scale Set
 echo "Creating VM scale set $vmssName"
 
 az vmss create \
@@ -70,7 +70,7 @@ az vmss create \
 
 echo "VM scale set created: $vmssName"
 
-# Associate NSG with VMSS subnet
+::# Associate NSG with VMSS subnet
 echo "Associating NSG: $nsgName with subnet: $subnetName"
 
 az network vnet subnet update \
@@ -82,7 +82,7 @@ az network vnet subnet update \
 
 echo "NSG: $nsgName associated with subnet: $subnetName"
 
-# Create Health Probe
+::# Create Health Probe
 echo "Creating health probe $probeName"
 
 az network lb probe create \
@@ -97,7 +97,7 @@ az network lb probe create \
 
 echo "Health probe created: $probeName"
 
-# Create Network Load Balancer Rule
+::# Create Network Load Balancer Rule
 echo "Creating network load balancer rule $lbRule"
 
 az network lb rule create \
@@ -114,7 +114,7 @@ az network lb rule create \
 
 echo "Network load balancer rule created: $lbRule"
 
-# Add port 80 to inbound rule NSG
+::# Add port 80 to inbound rule NSG
 echo "Adding port 80 to NSG $nsgName"
 
 az network nsg rule create \
@@ -128,7 +128,7 @@ az network nsg rule create \
 
 echo "Port 80 added to NSG: $nsgName"
 
-# Add port 22 to inbound rule NSG
+::# Add port 22 to inbound rule NSG
 echo "Adding port 22 to NSG $nsgName"
 
 az network nsg rule create \
